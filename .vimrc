@@ -665,7 +665,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Fast saving, via shortcuts.
-nmap <leader>w :w<cr>
+"nmap <leader>w :w<cr>
 nmap <leader>q :q<cr>
 
 " Visual mode pressing * or # searches for the current selection.
