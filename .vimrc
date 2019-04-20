@@ -433,7 +433,15 @@ if v:version >= 703
 endif
 
 " disable folding
-set nofoldenable
+"set nofoldenable
+
+set foldenable
+set foldlevelstart=10
+set foldnestmax=10
+set foldmethod=indent
+
+nnoremap <space> za
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -485,6 +493,27 @@ set formatoptions+=n
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <leader>w :wa<CR>
+nnoremap <leader>n :Note
+inoremap jk <esc>
+nnoremap <leader>s :mksession!<CR>
+nnoremap <leader>R :source ~/Session.vim<CR>
+nnoremap <leader>a :Ag
+:nmap <C-j> :bnext<CR>
+:nmap <C-k> :bprev<CR>
+nmap <leader>d :bd<CR>
+:nmap <leader>e : Errors<CR>
+:nmap <leader>C :lclose<CR>
+:nmap <leader>c :close<CR>
+
+" CtrlP settings
+let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+:nmap ; :CtrlPBuffer<CR>
 
 " gi moves to last insert mode (default)
 " gI moves to last modification
@@ -495,8 +524,8 @@ nnoremap j gj
 nnoremap k gk
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search).
-map <space> /
-map <C-space> ?
+" map <space> /
+" map <C-space> ?
 
 " Disable highlight when <leader><cr> is pressed.
 map <silent> <leader><cr> :noh<cr>
@@ -701,15 +730,15 @@ nmap K <nop>
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 " strip whitespace (,sw)
-noremap <leader>sw :call StripWhitespace()<CR>
+" noremap <leader>sw :call StripWhitespace()<CR>
 " save a file as root (,W)
-noremap <leader>W :w !sudo tee % > /dev/null<CR>
+" noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
-inoremap <s-tab> <C-n>
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' : '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' : '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+"inoremap <s-tab> <C-n>
+"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"inoremap <expr> <C-n> pumvisible() ? '<C-n>' : '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+"inoremap <expr> <M-,> pumvisible() ? '<C-n>' : '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 " Use 'ack' instead of Grep when available.
 if executable("ack")
@@ -793,6 +822,8 @@ function! ToggleNumber()
         set relativenumber
     endif
 endfunc
+nnoremap <C-n> :call ToggleNumber()<cr>
+nnoremap <leader>n :call ToggleNumber()<cr>
 
 " Stripe whitespace.
 function! StripWhitespace()
