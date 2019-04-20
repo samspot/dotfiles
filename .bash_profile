@@ -2,6 +2,7 @@ HISTSIZE=90000
 alias gs="git status"
 alias ga='git add .'
 alias gcc='ga && git commit -m '
+alias gc="git commit -m "
 alias va='vi ~/.bash_profile'
 alias sa='source ~/.bash_profile'
 alias ip='ifconfig |grep inet | grep broadcast'
