@@ -509,10 +509,10 @@ nmap <leader>d :bd<CR>
 
 " CtrlP settings
 let g:ctrlp_map = '<Leader>t'
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+"let g:ctrlp_match_window = 'bottom,order:ttb'
+"let g:ctrlp_switch_buffer = 0
+"let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 :nmap ; :CtrlPBuffer<CR>
 
 " gi moves to last insert mode (default)

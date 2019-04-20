@@ -1,3 +1,4 @@
+cd ~
 HISTSIZE=90000
 alias gs="git status"
 alias ga='git add .'
@@ -78,11 +79,14 @@ if [ -d $HOME/.redpill ]; then
 
   # define the path from "red-pill"
   export REDPILL=$HOME/.redpill
+  # echo $CONFIG_BASH_PLUGINS
 
   # Which plugins would you like to load? (plugins can be found in ~/.redpill/plugins/available/*)
   # Example format: plugins=(rails git textmate ruby lighthouse)
   # Add wisely, as too many plugins slow down shell startup.
   plugins=$(echo $CONFIG_BASH_PLUGINS | sed 's/(//g' | sed 's/)//g')
 
-  source $HOME/.redpill/redpill-init-bash.sh
+  # source $HOME/.redpill/redpill-init-bash.sh
 fi
+
+#git_prompt_toggle
